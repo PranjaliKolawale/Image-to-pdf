@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to PDF — Snap It Into a PDF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="stickers">🖼️📎📄</div>
+    <h1>IMAGE TO PDF</h1>
+    <p>Drop your images, get one clean PDF. No uploads, no cost.</p>
+    <span class="scan-id" id="fileNo">JOB #----</span>
+  </div>
+
+  <div class="folder">
+    <div class="panel">
+
+      <label class="field-label">Images</label>
+      <div class="dropzone" id="dropzone">
+        <strong>DROP YOUR IMAGES</strong>
+        <p>or tap to browse — JPG, PNG, WEBP, HEIC supported · drag to reorder after</p>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" multiple>
+      <div class="err" id="fileErr"></div>
+
+      <div class="img-list" id="imgList"></div>
+
+      <hr class="divider" id="optDivider" style="display:none;">
+
+      <div class="opts-row" id="optsRow" style="display:none;">
+        <div class="opt-field">
+          <label class="field-label" for="pageSize">Page size</label>
+          <select id="pageSize">
+            <option value="a4">A4</option>
+            <option value="letter">US Letter</option>
+            <option value="fit">Fit to image</option>
+          </select>
+        </div>
+        <div class="opt-field">
+          <label class="field-label" for="orientation">Orientation</label>
+          <select id="orientation">
+            <option value="auto">Auto (per image)</option>
+            <option value="portrait">Portrait</option>
+            <option value="landscape">Landscape</option>
+          </select>
+        </div>
+        <div class="opt-field">
+          <label class="field-label" for="margin">Margin</label>
+          <select id="margin">
+            <option value="none">None — full bleed</option>
+            <option value="small" selected>Small</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="scan-overlay" id="scanOverlay">
+        <div class="scan-doc"><div class="scan-beam"></div><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="scan-status" id="scanStatus">Building your PDF…</div>
+      </div>
+
+      <div class="run-row">
+        <button class="run-btn" id="runBtn" disabled>BUILD THE PDF →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="results" id="results">
+    <div class="panel">
+      <div class="stamp-row" id="stampRow">
+        <div class="stamp" id="stamp">
+          <span class="verdict">PDF READY ✨</span>
+          <span class="score" id="pageCountText">— pages</span>
+        </div>
+      </div>
+
+      <div class="run-row" style="justify-content:center; gap:10px;">
+        <a class="run-btn" id="downloadBtn" download="images.pdf">DOWNLOAD PDF ↓</a>
+      </div>
+
+      <div class="reset-row">
+        <button class="reset-btn" id="resetBtn">START ANOTHER ONE</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="footnote">Runs entirely in your browser. Images never leave your device.</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
